@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/** Единицы измерения */
 @Getter
 @Setter
 @Entity
@@ -17,6 +18,7 @@ public class MetricUnit {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    /** Наименование */
     @Column(name = "caption", nullable = false)
     private String caption;
 }

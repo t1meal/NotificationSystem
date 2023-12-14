@@ -9,6 +9,7 @@ import ru.fcahp.system.common.NotificationStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/** Уведомление */
 @Getter
 @Setter
 @Entity
@@ -47,9 +48,9 @@ public class Notification {
     @JoinTable(
             name = "notification_products_relations",
             joinColumns = @JoinColumn(name = "notification_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "product_package_id", referencedColumnName = "id")
     )
-    private List<Product> products;
+    private List<ProductPackage> productPackages;
 
     /** Дата создания уведомления */
     @Column(name = "created", nullable = false)
