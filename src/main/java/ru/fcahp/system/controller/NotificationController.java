@@ -29,13 +29,12 @@ public class NotificationController {
     @Operation(summary = "Поиск уведомлений GET запрос")
     public Page<NotificationDto> list(
             @RequestParam(name = "p", defaultValue = "1") @Parameter(description = "Номер страницы", required = true) Integer pageIndex,
-            @RequestParam(name = "page_size", defaultValue = "10") @Parameter(description = "Количество 'элементов' на странице") Integer pageSize,
+            @RequestParam(name = "page_size", defaultValue = "10") @Parameter(description = "Количество 'элементов' на странице") Integer pageSize)
 //            @RequestParam(required = false, name = "property") @Parameter(description = "Фильтр по ") Integer property,
 //            @RequestParam(required = false, name = "title") @Parameter(description = "Фильтр названию") String title)
     {
-
-        Specification<Notification> specification = notificationService.createSpecByFilters(property, title);
-        return notificationService.getAll(specification, pageIndex, pageSize).map(mapper::toDto);
+//        Specification<Notification> specification = notificationService.createSpecByFilters(property, title);
+        return notificationService.getAll(pageIndex, pageSize).map(mapper::toDto);
     }
 
     @Operation(summary = "Запрос на получение уведомления по Id")
@@ -56,7 +55,6 @@ public class NotificationController {
     public void updateProduct(@RequestBody NotificationDto dto) {
         notificationService.update(mapper.fromDto(dto));
     }
-
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Запрос на удаление уведомления из списка")

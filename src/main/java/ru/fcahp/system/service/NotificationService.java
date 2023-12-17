@@ -32,11 +32,12 @@ public class NotificationService {
 //        return spec;
 //    }
 
-    public Page<Notification> getAll(Specification<Notification> spec, int pageIndex, int pageSize) {
+    public Page<Notification> getAll(int pageIndex, int pageSize) {
         if (pageIndex < 1) {
             pageIndex = 1;
         }
-        return notificationRepository.findAll(spec , PageRequest.of(pageIndex - 1, pageSize));
+        // notificationRepository.findAll(spec , PageRequest.of(pageIndex - 1, pageSize));
+        return notificationRepository.findAll(PageRequest.of(pageIndex - 1, pageSize));
     }
 
     public Notification getById(Long id) {
