@@ -30,10 +30,11 @@ public class NotificationController {
     public Page<NotificationDto> list(
             @RequestParam(name = "p", defaultValue = "1") @Parameter(description = "Номер страницы", required = true) Integer pageIndex,
             @RequestParam(name = "page_size", defaultValue = "10") @Parameter(description = "Количество 'элементов' на странице") Integer pageSize,
-            @RequestParam(required = false, name = "property") @Parameter(description = "Фильтр по ") Integer minPrice,
-            @RequestParam(required = false, name = "title") @Parameter(description = "Фильтр названию") String title) {
+//            @RequestParam(required = false, name = "property") @Parameter(description = "Фильтр по ") Integer property,
+//            @RequestParam(required = false, name = "title") @Parameter(description = "Фильтр названию") String title)
+    {
 
-        Specification<Notification> specification = notificationService.createSpecByFilters(minPrice, title);
+        Specification<Notification> specification = notificationService.createSpecByFilters(property, title);
         return notificationService.getAll(specification, pageIndex, pageSize).map(mapper::toDto);
     }
 
