@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "notification")
+@Table(name = "notifications")
 public class Notification {
 
     @Id
@@ -27,8 +27,8 @@ public class Notification {
     private String sender;
 
     /** Получатель */
-    @Column(name = "getter", nullable = false)
-    private String getter;
+    @Column(name = "recipient", nullable = false)
+    private String recipient;
 
     /** Дата получения груза */
     @Column(name = "cargo_arrival_date", nullable = false)
@@ -56,8 +56,8 @@ public class Notification {
     @Column(name = "created", nullable = false)
     private LocalDateTime created;
 
-    /** Дата создания уведомления */
-    @Column(name = "information", nullable = false)
-    private String information;
+    /** Дополнительная информация */
+    @Column(name = "extra_info", nullable = false)
+    private String extraInfo;
 
 }

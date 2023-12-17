@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "product")
+@Table(name = "product_packages")
 public class ProductPackage {
 
     @Id
@@ -25,6 +25,10 @@ public class ProductPackage {
     /** Объем продукции */
     @Column(name = "capacity", nullable = false)
     private Double capacity;
+
+    /** Id уведомления */
+    @Column(name = "notification_id", nullable = false)
+    private Long notification_id;
 
     /** Единица измерения продукции */
     @ManyToOne
