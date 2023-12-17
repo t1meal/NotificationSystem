@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "crossing_point")
+@Table(name = "crossing_points")
 public class CrossingPoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

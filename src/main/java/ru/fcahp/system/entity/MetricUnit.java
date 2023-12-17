@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "metric_unit")
+@Table(name = "metric_units")
 public class MetricUnit {
 
     @Id
