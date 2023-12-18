@@ -33,8 +33,8 @@ angular.module('notification_system').controller('listController', function ($sc
         return arr;
     }
 
-    $scope.navToEditProductPage = function (productId) {
-        $location.path('edit_notification/' + productId);
+    $scope.navToEditNotificationPage = function (notificationId) {
+        $location.path('edit_notification/' + notificationId);
     }
 
     $scope.nextPage = function () {

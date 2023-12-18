@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.fcahp.system.dto.NotificationDto;
 import ru.fcahp.system.mapper.NotificationMapper;
@@ -43,7 +42,6 @@ public class NotificationController {
 
     @PostMapping
     @Operation(summary = "Запрос на создание нового уведомления")
-    @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody NotificationDto dto) {
         notificationService.create(mapper.fromDto(dto));
     }
