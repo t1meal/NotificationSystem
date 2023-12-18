@@ -22,6 +22,10 @@
                 templateUrl: 'edit_notification/edit_notification.html',
                 controller: 'editNotificationController'
             })
+            .when('/edit_production/:notificationId', {
+                templateUrl: 'edit_production/edit_production.html',
+                controller: 'editProductionController'
+            })
             .otherwise({
                 redirectTo: '/'
             })
@@ -33,7 +37,5 @@
 })();
 
 angular.module('notification_system').controller('indexController', function ($rootScope, $scope, $http, $localStorage, $location) {
-    const contextPath = 'http://localhost:5000/auth/api/v1/';
-    const cartPath = 'http://localhost:5000/cart/api/v1/cart';
-    const corePath = 'http://localhost:5000/core/api/v1';
+
 });

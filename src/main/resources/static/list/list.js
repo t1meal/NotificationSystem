@@ -37,6 +37,10 @@ angular.module('notification_system').controller('listController', function ($sc
         $location.path('edit_notification/' + notificationId);
     }
 
+    $scope.navToEditProduction = function (notificationId) {
+        $location.path('edit_production/' + notificationId);
+    }
+
     $scope.nextPage = function () {
         currentPage++;
         if (currentPage > $scope.notificationsPage.totalPages) {

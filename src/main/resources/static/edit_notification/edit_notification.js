@@ -2,7 +2,7 @@ angular.module('notification_system').controller('editNotificationController', f
 
     const baseURL = 'http://localhost:15000/notificationSystem/api/v1/';
 
-    $scope.prepareProductForUpdate = function () {
+    $scope.prepareNotificationForUpdate = function () {
         $http.get(baseURL + 'notifications/' + $routeParams.notificationId)
             .then(
                 function successCallback(response) {
@@ -17,7 +17,7 @@ angular.module('notification_system').controller('editNotificationController', f
         $http.put(baseURL + 'notifications', $scope.updating_notification)
             .then(
                 function successCallback() {
-                    $scope.updated_product = null;
+                    $scope.updating_notification = null;
                     alert("Notification is updated!");
                     $location.path('/list');
                 },
@@ -26,6 +26,6 @@ angular.module('notification_system').controller('editNotificationController', f
                 });
     }
 
-    $scope.prepareProductForUpdate();
+    $scope.prepareNotificationForUpdate();
 
 });

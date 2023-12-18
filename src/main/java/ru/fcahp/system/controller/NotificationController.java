@@ -18,7 +18,7 @@ import ru.fcahp.system.service.NotificationService;
 public class NotificationController {
 
     @Autowired
-    private NotificationService notificationService;
+    private NotificationService service;
     @Autowired
     private NotificationMapper mapper;
 
@@ -31,30 +31,30 @@ public class NotificationController {
 //            @RequestParam(required = false, name = "title") @Parameter(description = "Фильтр названию") String title)
     {
 //        Specification<Notification> specification = notificationService.createSpecByFilters(property, title);
-        return notificationService.getAll(pageIndex, pageSize).map(mapper::toDto);
+        return service.getAll(pageIndex, pageSize).map(mapper::toDto);
     }
 
     @Operation(summary = "Запрос на получение уведомления по Id")
     @GetMapping("/{id}")
     public NotificationDto findById(@PathVariable @Parameter(description = "Уникальный идентификатор", required = true) Long id) {
-        return mapper.toDto(notificationService.getById(id));
+        return mapper.toDto(service.getById(id));
     }
 
     @PostMapping
     @Operation(summary = "Запрос на создание нового уведомления")
     public void create(@RequestBody NotificationDto dto) {
-        notificationService.create(mapper.fromDto(dto));
+        service.create(mapper.fromDto(dto));
     }
 
     @PutMapping
     @Operation(summary = "Запрос на обновление уведомления из списка")
     public void update(@RequestBody NotificationDto dto) {
-        notificationService.update(mapper.fromDto(dto));
+        service.update(mapper.fromDto(dto));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Запрос на удаление уведомления из списка")
     public void deleteById(@PathVariable @Parameter(description = "Уникальный идентификатор", required = true) Long id) {
-        notificationService.deleteById(id);
+        service.deleteById(id);
     }
 }

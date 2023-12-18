@@ -19,6 +19,9 @@ public class ProductPackageDto implements Serializable {
     @Schema(description = "Объем продукции")
     private Double capacity;
 
+    @Schema(description = "Идентификатор уведомления")
+    private Long notification_id;
+
     @Schema(description = "Единицы измерения")
     private ValueRef metricUnit;
 }
