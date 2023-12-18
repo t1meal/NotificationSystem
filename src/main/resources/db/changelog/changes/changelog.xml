@@ -5,8 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-<changeSet id="initial" author="Alexey Kupriyanov">
-    <sqlFile path="db/changelog/sql/db_init.sql"/>
+<changeSet id="20231217 init_main_structure" author="Alexey Kupriyanov">
+    <sqlFile path="db/changelog/sql/ddl_init.sql"/>
 </changeSet>
+    <changeSet id="20231217 filled_base_data" author="Alexey Kupriyanov">
+        <sqlFile path="db/changelog/sql/dml_init.sql"/>
+    </changeSet>
 
 </databaseChangeLog>

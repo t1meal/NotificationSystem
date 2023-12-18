@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.fcahp.system.common.CrossingPoint;
 import ru.fcahp.system.common.NotificationStatus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     /** Отправитель */
@@ -32,32 +34,29 @@ public class Notification {
 
     /** Дата получения груза */
     @Column(name = "cargo_arrival_date", nullable = false)
-    private LocalDateTime cargoArrivalDate;
+    private LocalDate cargoArrivalDate;
 
     /** Статус уведомления  */
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private NotificationStatus status;
 
     /** Пункт пропуска */
-    @ManyToOne
-    @JoinColumn(name = "crossing_point_id", nullable = false)
+    @JoinColumn(name = "crossing_point", nullable = false)
+    @Enumerated(EnumType.STRING)
     private CrossingPoint crossingPoint;
 
     /** Продукция */
-    @ManyToMany
-    @JoinTable(
-            name = "notification_products_relations",
-            joinColumns = @JoinColumn(name = "notification_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_package_id", referencedColumnName = "id")
-    )
+    @OneToMany
+    @JoinColumn(name = "notification_id")
     private List<ProductPackage> productPackages;
 
     /** Дата создания уведомления */
-    @Column(name = "created", nullable = false)
-    private LocalDateTime created;
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
 
     /** Дополнительная информация */
-    @Column(name = "extra_info", nullable = false)
+    @Column(name = "extra_info")
     private String extraInfo;
 
 }
