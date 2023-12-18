@@ -15,7 +15,7 @@ CREATE TABLE notifications
     id                 bigserial primary key not null,
     sender             varchar(100),
     recipient          varchar(100),
-    cargo_arrival_date timestamp with time zone,
+    cargo_arrival_date date,
     status             varchar(10),
     crossing_point_id  bigint references crossing_points (id),
     created_at         timestamp with time zone default now(),
