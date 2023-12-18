@@ -37,7 +37,8 @@ public class NotificationDto implements Serializable {
 
     private List<ProductPackageDto> productPackages;
 
-    private LocalDateTime created;
+    private LocalDateTime created_at;
 
-    private String information;
+    private String extraInfo;
+
 }

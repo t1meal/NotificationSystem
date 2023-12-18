@@ -36,6 +36,7 @@ public class Notification {
 
     /** Статус уведомления  */
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private NotificationStatus status;
 
     /** Пункт пропуска */
@@ -44,17 +45,13 @@ public class Notification {
     private CrossingPoint crossingPoint;
 
     /** Продукция */
-    @ManyToMany
-    @JoinTable(
-            name = "notification_products_relations",
-            joinColumns = @JoinColumn(name = "notification_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_package_id", referencedColumnName = "id")
-    )
+    @OneToMany
+    @JoinColumn(name = "notification_id")
     private List<ProductPackage> productPackages;
 
     /** Дата создания уведомления */
-    @Column(name = "created", nullable = false)
-    private LocalDateTime created;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime created_at;
 
     /** Дополнительная информация */
     @Column(name = "extra_info", nullable = false)
