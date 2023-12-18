@@ -1,14 +1,13 @@
 package ru.fcahp.system.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
+import ru.fcahp.system.common.CrossingPoint;
 import ru.fcahp.system.common.NotificationStatus;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class NotificationDto implements Serializable {
 
     private Long id;
 
-//    @NotNull(message = "aaa")
+//    @NotNull(message = "aa")
     private String sender;
 //
 //    @NotNull(message = "aa")
@@ -27,13 +26,11 @@ public class NotificationDto implements Serializable {
 //    @NotBlank(message = "aa")
     private String recipient;
 
-//    @NotNull
-    private LocalDateTime cargoArrivalDate;
+    private LocalDate cargoArrivalDate;
 
-//    @NotNull
     private NotificationStatus status;
 
-    private ValueRef crossingPoint;
+    private CrossingPoint crossingPoint;
 
     private List<ProductPackageDto> productPackages;
 

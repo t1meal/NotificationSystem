@@ -1,6 +1,7 @@
 <div>
     <h3>Create notification of cargo</h3>
     <form novalidate ng-submit="createNotification()">
+
         <div class="mb-3">
             <label class="form-label">Sender</label>
             <input type="text" class="form-control" placeholder="please enter..."
@@ -15,8 +16,8 @@
 
         <div class="mb-3">
             <label class="form-label">Date of Arrival</label>
-            <input type="date" class="form-control" placeholder="please enter..."
-                   ng-model="new_notification.arrivalDate">
+            <input type="text" class="form-control" placeholder="please enter..."
+                   ng-model="new_notification.cargoArrivalDate">
         </div>
 
         <div>
@@ -24,19 +25,23 @@
             <select class="form-select" aria-label="Default select example" ng-model="new_notification.status">
                 <option value="CREATED">Created</option>
                 <option value="ORDERED">Ordered</option>
-<!--                <option value="CLOSED">Closed</option>-->
             </select>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Crossing Point</label>
-            <input type="text" class="form-control" placeholder="please enter..."
-                   ng-model="new_notification.crossingPoint">
+            <label class="form-label">Production</label>
+            <input type="text" class="form-control"
+                   placeholder="Adding products is only available from the notification list form" disabled>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Production</label>
-            <input type="text" class="form-control" placeholder="Adding products is only available from the notification list form" disabled>
+            <label class="form-label">Crossing Point</label>
+            <select class="form-select" aria-label="Default select example" ng-model="new_notification.crossingPoint">
+                <option value="WEST">West Entry</option>
+                <option value="EAST">East Entry</option>
+                <option value="MAIN">Main Entry</option>
+                <option value="NORTH">North Entry</option>
+            </select>
         </div>
 
         <div class="mb-3">

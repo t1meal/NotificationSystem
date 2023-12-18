@@ -6,8 +6,7 @@ import ru.fcahp.system.dto.NotificationDto;
 import ru.fcahp.system.entity.Notification;
 
 
-
-@Mapper (componentModel = "spring", uses = ProductPackageMapper.class)
+@Mapper(componentModel = "spring", uses = ProductPackageMapper.class)
 public interface NotificationMapper {
 
     NotificationDto toDto(Notification entity);

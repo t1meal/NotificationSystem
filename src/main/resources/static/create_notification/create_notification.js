@@ -1,6 +1,6 @@
 angular.module('notification_system').controller('createNotificationController', function ($scope, $http, $routeParams, $location) {
 
-    const baseURL = 'http://localhost:15000/products/api/v1/';
+    const baseURL = 'http://localhost:15000/notificationSystem/api/v1/';
 
     $scope.createNotification = function () {
         if ($scope.new_notification == null){

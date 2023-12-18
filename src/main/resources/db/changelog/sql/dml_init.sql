@@ -5,20 +5,14 @@ VALUES ('м3'),
        ('cм2'),
        ('шт');
 
-INSERT INTO crossing_points (caption)
-VALUES ('КПП Запад'),
-       ('КПП Восток'),
-       ('Главный въезд'),
-       ('Северный блокпост');
-
-INSERT INTO notifications (sender, recipient, cargo_arrival_date, status, crossing_point_id, extra_info)
-VALUES ('ООО КНМ', 'Прокуратура МО', '2023-12-28', 'CREATED', 1, 'type XL BOX'),
-       ('ИП Андреев', 'Х5 Retail Group', '2023-12-24', 'ORDERED', 2, 'type BOX'),
-       ('ОАО Интракс', 'Пятерочка', '2023-12-31', 'CREATED', 3, 'large BOX'),
-       ('ОАО Интракс', 'Магнит', '2023-12-30', 'ORDERED', 3, 'large BOX'),
-       ('ОАО Интракс', 'Дикси', '2023-12-29', 'ORDERED', 4, 'large BOX'),
-       ('ИП Николаев', 'Дикси', '2023-12-15', 'CLOSED', 4, 'BOX'),
-       ('ИП Николаев', 'ИП Авдеев', '2023-12-15', 'CLOSED', 1, 'BOX');
+INSERT INTO notifications (sender, recipient, cargo_arrival_date, status, crossing_point, extra_info)
+VALUES ('ООО КНМ', 'Прокуратура МО', '2023-12-28', 'CREATED', 'WEST', 'type XL BOX'),
+       ('ИП Андреев', 'Х5 Retail Group', '2023-12-24', 'ORDERED', 'EAST', 'type BOX'),
+       ('ОАО Интракс', 'Пятерочка', '2023-12-31', 'CREATED', 'MAIN', 'large BOX'),
+       ('ОАО Интракс', 'Магнит', '2023-12-30', 'ORDERED', 'MAIN', 'large BOX'),
+       ('ОАО Интракс', 'Дикси', '2023-12-29', 'ORDERED', 'NORTH', 'large BOX'),
+       ('ИП Николаев', 'Дикси', '2023-12-15', 'CLOSED', 'NORTH', 'BOX'),
+       ('ИП Николаев', 'ИП Авдеев', '2023-12-15', 'CLOSED', 'NORTH', 'BOX');
 
 INSERT INTO product_packages (caption, capacity, notification_id, metric_unit_id)
 VALUES ('Штукатурка', 23.00, 1, 1),

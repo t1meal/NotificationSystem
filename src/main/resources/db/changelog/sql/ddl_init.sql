@@ -4,20 +4,14 @@ CREATE TABLE metric_units
     caption varchar(100)
 );
 
-CREATE TABLE crossing_points
-(
-    id      bigserial primary key not null,
-    caption varchar(100)
-);
-
 CREATE TABLE notifications
 (
     id                 bigserial primary key not null,
     sender             varchar(100),
     recipient          varchar(100),
     cargo_arrival_date date,
-    status             varchar(10),
-    crossing_point_id  bigint references crossing_points (id),
+    status             varchar(20),
+    crossing_point     varchar(20),
     created_at         timestamp with time zone default now(),
     extra_info         varchar(256)
 );

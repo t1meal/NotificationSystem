@@ -3,36 +3,41 @@
 
     <table class="table table-hover">
         <thead>
-            <tr>
-                <td>Sender</td>
-                <td>Recipient</td>
-                <td>Date of Arrival</td>
-                <td>Status</td>
-                <td>Crossing Point</td>
-                <td>Production</td>
-                <td>Extra Info</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
+        <tr>
+            <td>Sender</td>
+            <td>Recipient</td>
+            <td>Date of Arrival</td>
+            <td>Status</td>
+            <td>Crossing Point</td>
+            <td>Production</td>
+            <td>Extra Info</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
         </thead>
-            <tbody>
-                <tr ng-repeat="notification in notificationsPage.content">
-                    <td>{{notification.sender}}</td>
-                    <td>{{notification.recipient}}</td>
-                    <td>{{notification.cargoArrivalDate}}</td>
-                    <td>{{notification.status}}</td>
-                    <td>{{notification.crossingPoint.caption}}</td>
-                    <td>{{notification.productPackages}}</td>
-                    <td>{{notification.extraInfo}}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" ng-click="navToEditProductPage(notification.id)">Update</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary" ng-click="deleteNotification(notification.id)">Delete</button>
-                    </td>
-
-                </tr>
-            </tbody>
+        <tbody>
+        <tr ng-repeat="notification in notificationsPage.content">
+            <td>{{notification.sender}}</td>
+            <td>{{notification.recipient}}</td>
+            <td>{{notification.cargoArrivalDate}}</td>
+            <td>{{notification.status}}</td>
+            <td>{{notification.crossingPoint}}</td>
+            <td>
+                <span ng-repeat="package in notification.productPackages">
+                    {{package.caption}}{{$last ? '' : ', '}}
+                </span>
+            </td>
+            <td>{{notification.extraInfo}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" ng-click="navToEditProductPage(notification.id)">Update
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" ng-click="deleteNotification(notification.id)">Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
     </table>
 
     <nav aria-label="Page navigation example">
