@@ -49,6 +49,15 @@
         </tbody>
     </table>
 
+<!--    <form novalidate ng-submit="notificationsWithFilters(searchString)">-->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control"
+                   placeholder="The search is performed by status (exact match) and product name (line occurrence)"
+                   ng-model="searchString">
+            <button class="btn btn-outline-secondary" type="button" ng-click="notificationsWithFilters(searchString)">Search</button>
+        </div>
+<!--    </form>-->
+
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item">

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import ru.fcahp.system.common.NotificationStatus;
 import ru.fcahp.system.dto.NotificationDto;
 import ru.fcahp.system.mapper.NotificationMapper;
 import ru.fcahp.system.service.NotificationService;
@@ -26,12 +27,14 @@ public class NotificationController {
     @Operation(summary = "Поиск уведомлений GET запрос")
     public Page<NotificationDto> list(
             @RequestParam(name = "p", defaultValue = "1") @Parameter(description = "Номер страницы", required = true) Integer pageIndex,
-            @RequestParam(name = "page_size", defaultValue = "10") @Parameter(description = "Количество 'элементов' на странице") Integer pageSize)
-//            @RequestParam(required = false, name = "property") @Parameter(description = "Фильтр по ") Integer property,
-//            @RequestParam(required = false, name = "title") @Parameter(description = "Фильтр названию") String title)
+            @RequestParam(name = "page_size", defaultValue = "10") @Parameter(description = "Количество 'элементов' на странице") Integer pageSize,
+            @RequestParam(required = false, name = "search_string") @Parameter(description = "Фильтр по ") String searchString)
     {
-//        Specification<Notification> specification = notificationService.createSpecByFilters(property, title);
-        return service.getAll(pageIndex, pageSize).map(mapper::toDto);
+        NotificationStatus searchStatus = NotificationStatus.valueOf(searchString);
+        if (pageIndex < 1) {
+            pageIndex = 1;
+        }
+        return service.getAll(searchStatus, pageIndex, pageSize).map(mapper::toDto);
     }
 
     @Operation(summary = "Запрос на получение уведомления по Id")

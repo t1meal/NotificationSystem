@@ -1,5 +1,7 @@
 angular.module('notification_system').controller('listController', function ($scope, $http, $location, $localStorage, $rootScope) {
 
+    $scope.searchString = "";
+
     const baseURL = 'http://localhost:15000/notificationSystem/api/v1/';
 
     let currentPage = 1;
@@ -44,6 +46,30 @@ angular.module('notification_system').controller('listController', function ($sc
     $scope.checkStatusForUpdate = function (status) {
         return status === 'CREATED';
     }
+
+    $scope.notificationsWithFilters = function (searchString) {
+        $http({
+            url: baseURL + 'notifications?' + 'search_string=' + searchString,
+            method: 'GET',
+            params: {
+                p: currentPage
+            }
+        }).then(function (response) {
+            $scope.notificationsPage = response.data;
+            $scope.paginationArray = $scope.generatePageIndexes(1, $scope.notificationsPage.totalPages);
+            currentPage = pageIndex;
+        });
+        // $http.get(baseURL + 'notifications?' + searchString.caption)
+        //     .then(
+        //         function successCallback(response) {
+        //             $scope.notificationsPage = response.data;
+        //             $scope.paginationArray = $scope.generatePageIndexes(1, $scope.notificationsPage.totalPages);
+        //         },
+        //         function failCallback(response) {
+        //             alert(response.data.messages);
+        //         });
+    }
+
 
     $scope.nextPage = function () {
         currentPage++;

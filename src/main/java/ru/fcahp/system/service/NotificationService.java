@@ -7,9 +7,9 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.fcahp.system.common.NotificationStatus;
 import ru.fcahp.system.entity.Notification;
 import ru.fcahp.system.repository.NotificationRepository;
-import ru.fcahp.system.specifications.NotificationSpecifications;
 
 import java.util.Optional;
 
@@ -19,25 +19,23 @@ public class NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
-//    public Specification<Notification> createSpecByFilters(Integer property, String title) {
-//
-//        Specification<Notification> spec = Specification.where(null);
-//
-//        if (property != null) {
-//            spec = spec.and(NotificationSpecifications.priceGreaterOrEqualsThan(property));
-//        }
-//        if (title != null) {
-//            spec = spec.and(NotificationSpecifications.titleLike(title));
-//        }
-//        return spec;
-//    }
-
-    public Page<Notification> getAll(int pageIndex, int pageSize) {
-        if (pageIndex < 1) {
-            pageIndex = 1;
+    public Specification<Notification> createSpecByFilter(NotificationStatus searchString) {
+        Specification<Notification> spec = Specification.where(null);
+        if (searchString != null) {
+            spec = spec.and(
+                    ((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(searchString.toString()), searchString))
+            );
+//            spec = spec.or(
+//                    ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("status"), String.format("%%%s%%", searchString)))
+//            );
         }
-        // notificationRepository.findAll(spec , PageRequest.of(pageIndex - 1, pageSize));
-        return notificationRepository.findAll(PageRequest.of(pageIndex - 1, pageSize));
+        return spec;
+    }
+
+    public Page<Notification> getAll(NotificationStatus searchString, int pageIndex, int pageSize) {
+        return notificationRepository.findAll(
+                createSpecByFilter(searchString),
+                PageRequest.of(pageIndex - 1, pageSize));
     }
 
     public Notification getById(Long id) {
