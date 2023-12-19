@@ -41,6 +41,10 @@ angular.module('notification_system').controller('listController', function ($sc
         $location.path('edit_production/' + notificationId);
     }
 
+    $scope.checkStatusForUpdate = function (status) {
+        return status === 'CREATED';
+    }
+
     $scope.nextPage = function () {
         currentPage++;
         if (currentPage > $scope.notificationsPage.totalPages) {

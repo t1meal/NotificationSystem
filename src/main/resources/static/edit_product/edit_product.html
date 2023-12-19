@@ -1,0 +1,22 @@
+<div>
+    <h3>Update product</h3>
+    <form novalidate ng-submit="updateProduct()">
+
+        <div class="mb-3">
+            <label class="form-label">Caption</label>
+            <input type="text" class="form-control" ng-model="updating_product.caption">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Capacity</label>
+            <input type="text" class="form-control" ng-model="updating_product.capacity">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Metric Unit</label>
+            <input type="text" class="form-control" ng-model="updating_product.metricUnit.caption">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save product</button>
+    </form>
+</div>

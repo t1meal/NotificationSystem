@@ -11,7 +11,7 @@
             <td>Status</td>
             <td>Crossing Point</td>
             <td>Production</td>
-            <td>...</td>
+
             <td>Extra Info</td>
             <td>...</td>
             <td>...</td>
@@ -29,12 +29,11 @@
                 <span ng-repeat="package in notification.productPackages">
                     {{package.caption}}{{$last ? '' : ', '}}
                 </span>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary"
-                        ng-click="navToEditProduction(notification.id)">Edit
+                <button type="button" class="btn btn-primary" ng-show="checkStatusForUpdate(notification.status)"
+                        ng-click="navToEditProduction(notification.id)"> Edit
                 </button>
             </td>
+
             <td>{{notification.extraInfo}}</td>
             <td>
                 <button type="button" class="btn btn-primary"

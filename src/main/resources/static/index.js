@@ -26,6 +26,10 @@
                 templateUrl: 'edit_production/edit_production.html',
                 controller: 'editProductionController'
             })
+            .when('/edit_product/:productId', {
+                templateUrl: 'edit_product/edit_product.html',
+                controller: 'editProductController'
+            })
             .otherwise({
                 redirectTo: '/'
             })
