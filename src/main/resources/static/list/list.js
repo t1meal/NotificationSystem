@@ -44,7 +44,7 @@ angular.module('notification_system').controller('listController', function ($sc
     }
 
     $scope.checkStatusForUpdate = function (status) {
-        return status === 'CREATED';
+        return status === 'Создано';
     }
 
     $scope.notificationsWithFilters = function (searchString) {
@@ -52,22 +52,13 @@ angular.module('notification_system').controller('listController', function ($sc
             url: baseURL + 'notifications?' + 'search_string=' + searchString,
             method: 'GET',
             params: {
-                p: currentPage
+                p: 1
             }
         }).then(function (response) {
             $scope.notificationsPage = response.data;
             $scope.paginationArray = $scope.generatePageIndexes(1, $scope.notificationsPage.totalPages);
-            currentPage = pageIndex;
+           // currentPage = pageIndex;
         });
-        // $http.get(baseURL + 'notifications?' + searchString.caption)
-        //     .then(
-        //         function successCallback(response) {
-        //             $scope.notificationsPage = response.data;
-        //             $scope.paginationArray = $scope.generatePageIndexes(1, $scope.notificationsPage.totalPages);
-        //         },
-        //         function failCallback(response) {
-        //             alert(response.data.messages);
-        //         });
     }
 
 

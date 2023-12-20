@@ -4,23 +4,20 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.fcahp.system.dto.ProductPackageDto;
 import ru.fcahp.system.mapper.ProductPackageMapper;
 import ru.fcahp.system.service.ProductPackageService;
 
-
-@RequestMapping("v1/product_packages")
+@RequestMapping("api/v1/product_packages")
 @RequiredArgsConstructor
-@Tag(name = "Уведомления", description = "Методы работы с уведомлениями")
+@Tag(name = "Пакет груза", description = "Методы работы с пакетами груза")
 @RestController
 public class ProductPackageController {
 
-    @Autowired
-    private ProductPackageService service;
-    @Autowired
-    private ProductPackageMapper mapper;
+    private final ProductPackageService service;
+    private final ProductPackageMapper mapper;
 
     @Operation(summary = "Запрос на получение продукта по Id")
     @GetMapping("/{id}")
@@ -30,13 +27,13 @@ public class ProductPackageController {
 
     @PostMapping
     @Operation(summary = "Запрос на создание нового продукта")
-    public void create(@RequestBody ProductPackageDto dto) {
+    public void create(@RequestBody @Validated ProductPackageDto dto) {
         service.create(mapper.fromDto(dto));
     }
 
     @PutMapping
     @Operation(summary = "Запрос на обновление продукта из списка")
-    public void update(@RequestBody ProductPackageDto dto) {
+    public void update(@RequestBody @Validated ProductPackageDto dto) {
         service.update(mapper.fromDto(dto));
     }
 
