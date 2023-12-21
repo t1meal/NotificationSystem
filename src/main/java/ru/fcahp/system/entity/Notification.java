@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldNameConstants;
 import ru.fcahp.system.common.CrossingPoint;
 import ru.fcahp.system.common.NotificationStatus;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
+@FieldNameConstants
 @Table(name = "notifications")
 public class Notification {
 
@@ -42,12 +44,12 @@ public class Notification {
     private NotificationStatus status;
 
     /** Пункт пропуска */
-    @JoinColumn(name = "crossing_point", nullable = false)
+    @Column(name = "crossing_point", nullable = false)
     @Enumerated(EnumType.STRING)
     private CrossingPoint crossingPoint;
 
     /** Продукция */
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "notification_id")
     private List<ProductPackage> productPackages;
 

@@ -5,11 +5,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-<changeSet id="20231217 init_main_structure" author="Alexey Kupriyanov">
-    <sqlFile path="db/changelog/sql/ddl_init.sql"/>
-</changeSet>
+    <changeSet id="20231217 init_main_structure" author="Alexey Kupriyanov">
+        <sqlFile path="db/changelog/sql/ddl_init.sql"/>
+    </changeSet>
+
     <changeSet id="20231217 filled_base_data" author="Alexey Kupriyanov">
         <sqlFile path="db/changelog/sql/dml_init.sql"/>
+    </changeSet>
+
+    <changeSet id="20231218 insert_additional_data_to_notifications" author="Alexey Kupriyanov">
+        <sqlFile path="db/changelog/sql/insert_data_to_notification.sql"/>
+    </changeSet>
+
+    <changeSet id="20231218 insert_additional_data_to_product_packages" author="Alexey Kupriyanov">
+        <sqlFile path="db/changelog/sql/insert_data_to_product_packages.sql"/>
     </changeSet>
 
 </databaseChangeLog>

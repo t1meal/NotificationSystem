@@ -1,0 +1,36 @@
+<div>
+    <h3>Add product to notification</h3>
+    <div class="mb-3">
+        <label class="form-label">Notification Id</label>
+        <input type="text" class="form-control"
+               ng-model="parentNotification.id" disabled>
+    </div>
+
+    <form novalidate ng-submit="createProduct()">
+
+        <div class="mb-3">
+            <label class="form-label">Caption of Product</label>
+            <input type="text" class="form-control" placeholder="please enter..."
+                   ng-model="new_product.caption">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Capacity</label>
+            <input type="text" class="form-control" placeholder="please enter..."
+                   ng-model="new_product.capacity">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Metric Unit</label>
+            <select class="form-select" aria-label="Default select example" ng-model="new_product.metricUnit">
+                <option value="м3">м3</option>
+                <option value="cм3">см3</option>
+                <option value="м2">м2</option>
+                <option value="см2">см2</option>
+                <option value="шт">шт</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>

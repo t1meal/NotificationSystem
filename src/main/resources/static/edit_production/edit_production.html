@@ -1,0 +1,39 @@
+<div>
+    <div>
+        <h2>Edit production</h2>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>Notification Id</td>
+                <td>Caption of product</td>
+                <td>Capacity</td>
+                <td>Metric Unit</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="production in notification.productPackages">
+                <td>{{notification.id}}</td>
+                <td>{{production.caption}}</td>
+                <td>{{production.capacity}}</td>
+                <td>{{production.metricUnit}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="navToEditProduct(production.id)">Edit
+                    </button>
+                </td>
+                <td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="deleteProduct(production.id)">Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <button class="btn btn-primary" type="button"
+                ng-click="navToAddProductPage(notification.id)">Add</button>
+    </div>
+</div>
