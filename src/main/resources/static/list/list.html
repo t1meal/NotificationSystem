@@ -11,10 +11,7 @@
             <td>Status</td>
             <td>Crossing Point</td>
             <td>Production</td>
-
             <td>Extra Info</td>
-            <td>...</td>
-            <td>...</td>
         </tr>
         </thead>
         <tbody>
@@ -49,14 +46,12 @@
         </tbody>
     </table>
 
-<!--    <form novalidate ng-submit="notificationsWithFilters(searchString)">-->
         <div class="input-group mb-3">
             <input type="text" class="form-control"
                    placeholder="The search is performed by status (exact match) and product name (line occurrence)"
                    ng-model="searchString">
             <button class="btn btn-outline-secondary" type="button" ng-click="notificationsWithFilters(searchString)">Search</button>
         </div>
-<!--    </form>-->
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
@@ -67,7 +62,7 @@
             </li>
 
             <li class="page-item" ng-repeat="pageIndex in paginationArray">
-                <button class="page-link" ng-click="loadProducts(pageIndex)">{{pageIndex}}</button>
+                <button class="page-link" ng-click="loadNotifications(pageIndex)">{{pageIndex}}</button>
             </li>
 
             <li class="page-item">

@@ -10,7 +10,7 @@ import ru.fcahp.system.dto.ProductPackageDto;
 import ru.fcahp.system.mapper.ProductPackageMapper;
 import ru.fcahp.system.service.ProductPackageService;
 
-@RequestMapping("api/v1/product_packages")
+@RequestMapping("/api/v1/product_packages")
 @RequiredArgsConstructor
 @Tag(name = "Пакет груза", description = "Методы работы с пакетами груза")
 @RestController

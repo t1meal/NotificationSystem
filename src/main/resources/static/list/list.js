@@ -1,4 +1,4 @@
-angular.module('notification_system').controller('listController', function ($scope, $http, $location, $localStorage, $rootScope) {
+angular.module('notification_system').controller('listController', function ($scope, $http, $location) {
 
     $scope.searchString = "";
 
@@ -16,7 +16,9 @@ angular.module('notification_system').controller('listController', function ($sc
         }).then(function (response) {
             $scope.notificationsPage = response.data;
             $scope.paginationArray = $scope.generatePageIndexes(1, $scope.notificationsPage.totalPages);
-            currentPage = pageIndex;
+            if (pageIndex !== undefined){
+                currentPage = pageIndex;
+            }
         });
     }
 
@@ -63,14 +65,14 @@ angular.module('notification_system').controller('listController', function ($sc
 
 
     $scope.nextPage = function () {
-        currentPage++;
+        ++currentPage;
         if (currentPage > $scope.notificationsPage.totalPages) {
             currentPage = $scope.notificationsPage.totalPages;
         }
         $scope.loadNotifications(currentPage);
     }
     $scope.prevPage = function () {
-        currentPage--;
+        --currentPage;
         if (currentPage < 1) {
             currentPage = 1;
         }

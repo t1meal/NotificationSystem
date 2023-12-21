@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldNameConstants;
+import ru.fcahp.system.common.MetricUnit;
 
 /** Продукция */
 @Getter
@@ -33,7 +34,7 @@ public class ProductPackage {
     private Long notificationId;
 
     /** Единица измерения продукции */
-    @ManyToOne
-    @JoinColumn(name = "metric_unit_id", nullable = false)
+    @Column(name = "metric_unit", nullable = false)
+    @Enumerated(EnumType.STRING)
     private MetricUnit metricUnit;
 }

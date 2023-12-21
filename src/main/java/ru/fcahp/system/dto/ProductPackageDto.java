@@ -27,5 +27,5 @@ public class ProductPackageDto implements Serializable {
 
     @NotBlank(message = "Поле 'Единицы измерения' должно быть заполнено")
     @Schema(description = "Единицы измерения")
-    private ValueRef metricUnit;
+    private String metricUnit;
 }

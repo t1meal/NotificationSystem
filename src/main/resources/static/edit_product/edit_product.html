@@ -14,9 +14,14 @@
 
         <div class="mb-3">
             <label class="form-label">Metric Unit</label>
-            <input type="text" class="form-control" ng-model="updating_product.metricUnit.caption">
+            <select class="form-select" aria-label="Default select example" ng-model="updating_product.metricUnit">
+                <option value="м3">м3</option>
+                <option value="cм3">см3</option>
+                <option value="м2">м2</option>
+                <option value="см2">см2</option>
+                <option value="шт">шт</option>
+            </select>
         </div>
-
         <button type="submit" class="btn btn-primary">Save product</button>
     </form>
 </div>

@@ -13,7 +13,7 @@ import ru.fcahp.system.mapper.NotificationMapper;
 import ru.fcahp.system.service.NotificationService;
 @Slf4j
 @RestController
-@RequestMapping("api/v1/notifications")
+@RequestMapping("/api/v1/notifications")
 @RequiredArgsConstructor
 @Tag(name = "Уведомления", description = "Методы работы с уведомлениями")
 public class NotificationController {

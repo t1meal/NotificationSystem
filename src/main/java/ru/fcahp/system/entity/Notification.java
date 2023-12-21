@@ -44,7 +44,7 @@ public class Notification {
     private NotificationStatus status;
 
     /** Пункт пропуска */
-    @JoinColumn(name = "crossing_point", nullable = false)
+    @Column(name = "crossing_point", nullable = false)
     @Enumerated(EnumType.STRING)
     private CrossingPoint crossingPoint;
 

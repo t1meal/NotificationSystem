@@ -18,6 +18,16 @@ angular.module('notification_system').controller('editProductionController', fun
         $location.path('edit_product/' + productId);
     }
 
+    $scope.navToAddProductPage = function () {
+        $location.path('create_product/' + $scope.notification.id);
+    }
+    $scope.deleteProduct = function (id) {
+        $http.delete(baseURL + 'product_packages/' + id)
+            .then(function () {
+                $scope.prepareNotificationForUpdateProduction();
+            });
+    }
+
     $scope.prepareNotificationForUpdateProduction();
 
 });

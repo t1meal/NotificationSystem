@@ -19,7 +19,7 @@ angular.module('notification_system').controller('editProductController', functi
             .then(
                 function successCallback() {
                     alert("Product is updated!");
-                    $location.path('edit_production/' + $scope.updating_product.notification_id);
+                    $location.path('/list/');
                     $scope.updating_product = null;
                 },
                 function failCallback(response) {

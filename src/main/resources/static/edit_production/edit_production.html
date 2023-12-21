@@ -9,7 +9,6 @@
                 <td>Caption of product</td>
                 <td>Capacity</td>
                 <td>Metric Unit</td>
-                <td>...</td>
             </tr>
             </thead>
             <tbody>
@@ -17,15 +16,24 @@
                 <td>{{notification.id}}</td>
                 <td>{{production.caption}}</td>
                 <td>{{production.capacity}}</td>
-                <td>{{production.metricUnit.caption}}</td>
+                <td>{{production.metricUnit}}</td>
                 <td>
                     <button type="button" class="btn btn-primary"
                             ng-click="navToEditProduct(production.id)">Edit
+                    </button>
+                </td>
+                <td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="deleteProduct(production.id)">Delete
                     </button>
                 </td>
             </tr>
             </tbody>
 
         </table>
+
+        <button class="btn btn-primary" type="button"
+                ng-click="navToAddProductPage(notification.id)">Add</button>
     </div>
 </div>

@@ -17,7 +17,7 @@ public enum CrossingPoint {
     }
     public static CrossingPoint fromCaption(String caption) {
         return Arrays.stream(values())
-                .filter(status -> status.caption.equals(caption))
+                .filter(point -> point.caption.equals(caption))
                 .findFirst()
                 .orElse(null);
     }
